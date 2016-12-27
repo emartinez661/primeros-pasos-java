@@ -1,0 +1,81 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Ventana {
+	JFrame ventana;
+	JLabel label,label1,label2;
+	JButton entrar;
+	JTextField campo,campo1;
+	
+	
+	private void CrearVentana(){
+		ventana = new JFrame();
+		ventana.setTitle("Nueva Ventana a Pata");
+		ventana.setBounds(100, 100, 500, 500);
+		ventana.setVisible(true);
+		ventana.setDefaultCloseOperation(ventana.EXIT_ON_CLOSE);
+		ventana.getContentPane().setLayout(null);
+		
+	}
+	
+	private void CrearCampo(){
+		
+		campo = new JTextField();
+		campo.setBounds(100, 48, 120, 23);
+		ventana.getContentPane().add(campo);
+		campo.setHorizontalAlignment(JTextField.CENTER);
+		
+		campo1 = new JTextField();
+		campo1.setBounds(100, 95, 120, 23);
+		ventana.getContentPane().add(campo1);
+		campo1.setHorizontalAlignment(JTextField.CENTER);
+				
+		
+	}
+	private void CrearLabel (){
+		
+		label = new JLabel("Nombre");
+		label.setBounds(23,48,49,27);
+		ventana.getContentPane().add(label);
+		
+		label1 = new JLabel("Apellido");
+		label1.setBounds(23,95,49,27);
+		ventana.getContentPane().add(label1);
+		
+		label2 = new JLabel("");
+		label2.setBounds(249, 249, 125,26 );
+		ventana.getContentPane().add(label2);
+	}
+	
+	private void CrearBoton(){
+		JButton boton = new JButton("iniciar");
+		boton.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String nombre = campo.getText();
+				String apellido = campo1.getText();
+				// TODO Auto-generated method stub
+				label2.setText(apellido+" "+nombre);
+			}
+		});
+		boton.setBounds(120, 140, 89, 23);
+		ventana.getContentPane().add(boton);
+	}
+	
+	
+	
+	//CONSTRUCTOR 
+	public Ventana(){
+		CrearVentana();
+		CrearCampo();
+		CrearLabel();
+		CrearBoton();
+	}
+	
+}
